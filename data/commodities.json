@@ -1,0 +1,151 @@
+{
+  "commodities": [
+    {
+      "name": "Food Cartridges",
+      "category": "Foods",
+      "base_price": 105,
+      "rarity": "common",
+      "description": "Essential food supplies for colonists"
+    },
+    {
+      "name": "Medical Supplies",
+      "category": "Medicines",
+      "base_price": 1450,
+      "rarity": "uncommon",
+      "description": "General medical supplies for colony health services"
+    },
+    {
+      "name": "Basic Medicines",
+      "category": "Medicines",
+      "base_price": 279,
+      "rarity": "common",
+      "description": "Basic pharmaceutical supplies"
+    },
+    {
+      "name": "Performance Enhancers",
+      "category": "Medicines",
+      "base_price": 6816,
+      "rarity": "rare",
+      "description": "Advanced medical compounds for enhanced performance"
+    },
+    {
+      "name": "Advanced Medicines",
+      "category": "Medicines",
+      "base_price": 1259,
+      "rarity": "uncommon",
+      "description": "Sophisticated medical treatments"
+    },
+    {
+      "name": "Clothing",
+      "category": "Consumer Items",
+      "base_price": 285,
+      "rarity": "common",
+      "description": "Essential clothing and textiles for colonists"
+    },
+    {
+      "name": "Consumer Technology",
+      "category": "Consumer Items",
+      "base_price": 6769,
+      "rarity": "rare",
+      "description": "Advanced consumer electronics and devices"
+    },
+    {
+      "name": "Domestic Appliances",
+      "category": "Consumer Items",
+      "base_price": 487,
+      "rarity": "common",
+      "description": "Household appliances for colonial living"
+    },
+    {
+      "name": "Evacuation Shelter",
+      "category": "Consumer Items",
+      "base_price": 343,
+      "rarity": "common",
+      "description": "Emergency shelters for colony safety"
+    },
+    {
+      "name": "Survival Equipment",
+      "category": "Consumer Items",
+      "base_price": 485,
+      "rarity": "common",
+      "description": "Essential survival gear for harsh environments"
+    },
+    {
+      "name": "Personal Weapons",
+      "category": "Weapons",
+      "base_price": 4632,
+      "rarity": "uncommon",
+      "description": "Personal defense weapons for colonists"
+    },
+    {
+      "name": "Battle Weapons",
+      "category": "Weapons",
+      "base_price": 7259,
+      "rarity": "rare",
+      "description": "Military-grade weapons for colony defense"
+    },
+    {
+      "name": "Reactive Armour",
+      "category": "Weapons",
+      "base_price": 2113,
+      "rarity": "uncommon",
+      "description": "Advanced protective armor systems"
+    },
+    {
+      "name": "Computer Components",
+      "category": "Technology",
+      "base_price": 513,
+      "rarity": "common",
+      "description": "Electronic components for colony infrastructure"
+    },
+    {
+      "name": "Micro-Weave Cooling Hoses",
+      "category": "Technology",
+      "base_price": 417,
+      "rarity": "common",
+      "description": "Advanced cooling systems for colony equipment"
+    },
+    {
+      "name": "Geological Equipment",
+      "category": "Technology",
+      "base_price": 1661,
+      "rarity": "uncommon",
+      "description": "Equipment for geological surveys and mining"
+    },
+    {
+      "name": "Thermal Cooling Units",
+      "category": "Technology",
+      "base_price": 256,
+      "rarity": "common",
+      "description": "Thermal management systems for colony infrastructure"
+    },
+    {
+      "name": "Building Fabricators",
+      "category": "Machinery",
+      "base_price": 980,
+      "rarity": "uncommon",
+      "description": "Advanced construction machinery for colony building"
+    },
+    {
+      "name": "Crop Harvesters",
+      "category": "Machinery",
+      "base_price": 2021,
+      "rarity": "uncommon",
+      "description": "Agricultural machinery for food production"
+    },
+    {
+      "name": "Marine Equipment",
+      "category": "Machinery",
+      "base_price": 1523,
+      "rarity": "uncommon",
+      "description": "Specialized equipment for aquatic environments"
+    },
+    {
+      "name": "Power Generators",
+      "category": "Machinery",
+      "base_price": 458,
+      "rarity": "common",
+      "description": "Power generation equipment for colony energy needs"
+    }
+  ]
+}
