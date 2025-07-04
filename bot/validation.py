@@ -97,27 +97,25 @@ class CommodityValidator:
     def get_default_commodities(self) -> Dict[str, Any]:
         """Default commodities if data file is not available"""
         default_commodities = {
-            'Food Cartridges': {'name': 'Food Cartridges', 'category': 'Foods', 'base_price': 105, 'rarity': 'common'},
-            'Medical Supplies': {'name': 'Medical Supplies', 'category': 'Medicines', 'base_price': 1450, 'rarity': 'uncommon'},
-            'Basic Medicines': {'name': 'Basic Medicines', 'category': 'Medicines', 'base_price': 279, 'rarity': 'common'},
-            'Performance Enhancers': {'name': 'Performance Enhancers', 'category': 'Medicines', 'base_price': 6816, 'rarity': 'rare'},
-            'Advanced Medicines': {'name': 'Advanced Medicines', 'category': 'Medicines', 'base_price': 1259, 'rarity': 'uncommon'},
-            'Clothing': {'name': 'Clothing', 'category': 'Consumer Items', 'base_price': 285, 'rarity': 'common'},
-            'Consumer Technology': {'name': 'Consumer Technology', 'category': 'Consumer Items', 'base_price': 6769, 'rarity': 'rare'},
-            'Domestic Appliances': {'name': 'Domestic Appliances', 'category': 'Consumer Items', 'base_price': 487, 'rarity': 'common'},
-            'Evacuation Shelter': {'name': 'Evacuation Shelter', 'category': 'Consumer Items', 'base_price': 343, 'rarity': 'common'},
-            'Survival Equipment': {'name': 'Survival Equipment', 'category': 'Consumer Items', 'base_price': 485, 'rarity': 'common'},
-            'Personal Weapons': {'name': 'Personal Weapons', 'category': 'Weapons', 'base_price': 4632, 'rarity': 'uncommon'},
-            'Battle Weapons': {'name': 'Battle Weapons', 'category': 'Weapons', 'base_price': 7259, 'rarity': 'rare'},
-            'Reactive Armour': {'name': 'Reactive Armour', 'category': 'Weapons', 'base_price': 2113, 'rarity': 'uncommon'},
+            'Aluminum': {'name': 'Aluminum', 'category': 'Metals', 'base_price': 340, 'rarity': 'common'},
+            'Ceramic Composites': {'name': 'Ceramic Composites', 'category': 'Industrial Materials', 'base_price': 232, 'rarity': 'common'},
+            'CMM Composites': {'name': 'CMM Composites', 'category': 'Industrial Materials', 'base_price': 3132, 'rarity': 'uncommon'},
             'Computer Components': {'name': 'Computer Components', 'category': 'Technology', 'base_price': 513, 'rarity': 'common'},
-            'Micro-Weave Cooling Hoses': {'name': 'Micro-Weave Cooling Hoses', 'category': 'Technology', 'base_price': 417, 'rarity': 'common'},
-            'Geological Equipment': {'name': 'Geological Equipment', 'category': 'Technology', 'base_price': 1661, 'rarity': 'uncommon'},
-            'Thermal Cooling Units': {'name': 'Thermal Cooling Units', 'category': 'Technology', 'base_price': 256, 'rarity': 'common'},
-            'Building Fabricators': {'name': 'Building Fabricators', 'category': 'Machinery', 'base_price': 980, 'rarity': 'uncommon'},
-            'Crop Harvesters': {'name': 'Crop Harvesters', 'category': 'Machinery', 'base_price': 2021, 'rarity': 'uncommon'},
-            'Marine Equipment': {'name': 'Marine Equipment', 'category': 'Machinery', 'base_price': 1523, 'rarity': 'uncommon'},
-            'Power Generators': {'name': 'Power Generators', 'category': 'Machinery', 'base_price': 458, 'rarity': 'common'}
+            'Copper': {'name': 'Copper', 'category': 'Metals', 'base_price': 481, 'rarity': 'common'},
+            'Food Cartridges': {'name': 'Food Cartridges', 'category': 'Foods', 'base_price': 105, 'rarity': 'common'},
+            'Fruit and Vegetables': {'name': 'Fruit and Vegetables', 'category': 'Foods', 'base_price': 312, 'rarity': 'common'},
+            'Insulating Membrane': {'name': 'Insulating Membrane', 'category': 'Industrial Materials', 'base_price': 7837, 'rarity': 'rare'},
+            'Liquid Oxygen': {'name': 'Liquid Oxygen', 'category': 'Chemicals', 'base_price': 263, 'rarity': 'common'},
+            'Medical Diagnostic Equipment': {'name': 'Medical Diagnostic Equipment', 'category': 'Medicines', 'base_price': 2848, 'rarity': 'uncommon'},
+            'Non-Lethal Weapons': {'name': 'Non-Lethal Weapons', 'category': 'Weapons', 'base_price': 1837, 'rarity': 'uncommon'},
+            'Polymers': {'name': 'Polymers', 'category': 'Industrial Materials', 'base_price': 171, 'rarity': 'common'},
+            'Power Generators': {'name': 'Power Generators', 'category': 'Machinery', 'base_price': 458, 'rarity': 'common'},
+            'Semiconductors': {'name': 'Semiconductors', 'category': 'Technology', 'base_price': 967, 'rarity': 'uncommon'},
+            'Steel': {'name': 'Steel', 'category': 'Metals', 'base_price': 335, 'rarity': 'common'},
+            'Superconductors': {'name': 'Superconductors', 'category': 'Technology', 'base_price': 6609, 'rarity': 'rare'},
+            'Titanium': {'name': 'Titanium', 'category': 'Metals', 'base_price': 1006, 'rarity': 'uncommon'},
+            'Water': {'name': 'Water', 'category': 'Chemicals', 'base_price': 120, 'rarity': 'common'},
+            'Water Purifiers': {'name': 'Water Purifiers', 'category': 'Machinery', 'base_price': 258, 'rarity': 'common'}
         }
         
         return default_commodities

@@ -1,95 +1,25 @@
 {
   "commodities": [
     {
-      "name": "Food Cartridges",
-      "category": "Foods",
-      "base_price": 105,
+      "name": "Aluminum",
+      "category": "Metals",
+      "base_price": 340,
       "rarity": "common",
-      "description": "Essential food supplies for colonists"
+      "description": "Lightweight metal essential for construction"
     },
     {
-      "name": "Medical Supplies",
-      "category": "Medicines",
-      "base_price": 1450,
+      "name": "Ceramic Composites",
+      "category": "Industrial Materials",
+      "base_price": 232,
+      "rarity": "common",
+      "description": "Advanced composite materials for construction"
+    },
+    {
+      "name": "CMM Composites",
+      "category": "Industrial Materials",
+      "base_price": 3132,
       "rarity": "uncommon",
-      "description": "General medical supplies for colony health services"
-    },
-    {
-      "name": "Basic Medicines",
-      "category": "Medicines",
-      "base_price": 279,
-      "rarity": "common",
-      "description": "Basic pharmaceutical supplies"
-    },
-    {
-      "name": "Performance Enhancers",
-      "category": "Medicines",
-      "base_price": 6816,
-      "rarity": "rare",
-      "description": "Advanced medical compounds for enhanced performance"
-    },
-    {
-      "name": "Advanced Medicines",
-      "category": "Medicines",
-      "base_price": 1259,
-      "rarity": "uncommon",
-      "description": "Sophisticated medical treatments"
-    },
-    {
-      "name": "Clothing",
-      "category": "Consumer Items",
-      "base_price": 285,
-      "rarity": "common",
-      "description": "Essential clothing and textiles for colonists"
-    },
-    {
-      "name": "Consumer Technology",
-      "category": "Consumer Items",
-      "base_price": 6769,
-      "rarity": "rare",
-      "description": "Advanced consumer electronics and devices"
-    },
-    {
-      "name": "Domestic Appliances",
-      "category": "Consumer Items",
-      "base_price": 487,
-      "rarity": "common",
-      "description": "Household appliances for colonial living"
-    },
-    {
-      "name": "Evacuation Shelter",
-      "category": "Consumer Items",
-      "base_price": 343,
-      "rarity": "common",
-      "description": "Emergency shelters for colony safety"
-    },
-    {
-      "name": "Survival Equipment",
-      "category": "Consumer Items",
-      "base_price": 485,
-      "rarity": "common",
-      "description": "Essential survival gear for harsh environments"
-    },
-    {
-      "name": "Personal Weapons",
-      "category": "Weapons",
-      "base_price": 4632,
-      "rarity": "uncommon",
-      "description": "Personal defense weapons for colonists"
-    },
-    {
-      "name": "Battle Weapons",
-      "category": "Weapons",
-      "base_price": 7259,
-      "rarity": "rare",
-      "description": "Military-grade weapons for colony defense"
-    },
-    {
-      "name": "Reactive Armour",
-      "category": "Weapons",
-      "base_price": 2113,
-      "rarity": "uncommon",
-      "description": "Advanced protective armor systems"
+      "description": "Ceramic Matrix Composites for advanced applications"
     },
     {
       "name": "Computer Components",
@@ -99,46 +29,60 @@
       "description": "Electronic components for colony infrastructure"
     },
     {
-      "name": "Micro-Weave Cooling Hoses",
-      "category": "Technology",
-      "base_price": 417,
+      "name": "Copper",
+      "category": "Metals",
+      "base_price": 481,
       "rarity": "common",
-      "description": "Advanced cooling systems for colony equipment"
+      "description": "Essential metal for electrical systems"
     },
     {
-      "name": "Geological Equipment",
-      "category": "Technology",
-      "base_price": 1661,
-      "rarity": "uncommon",
-      "description": "Equipment for geological surveys and mining"
-    },
-    {
-      "name": "Thermal Cooling Units",
-      "category": "Technology",
-      "base_price": 256,
+      "name": "Food Cartridges",
+      "category": "Foods",
+      "base_price": 105,
       "rarity": "common",
-      "description": "Thermal management systems for colony infrastructure"
+      "description": "Essential food supplies for colonists"
     },
     {
-      "name": "Building Fabricators",
-      "category": "Machinery",
-      "base_price": 980,
-      "rarity": "uncommon",
-      "description": "Advanced construction machinery for colony building"
+      "name": "Fruit and Vegetables",
+      "category": "Foods",
+      "base_price": 312,
+      "rarity": "common",
+      "description": "Fresh produce for colony nutrition"
     },
     {
-      "name": "Crop Harvesters",
-      "category": "Machinery",
-      "base_price": 2021,
-      "rarity": "uncommon",
-      "description": "Agricultural machinery for food production"
+      "name": "Insulating Membrane",
+      "category": "Industrial Materials",
+      "base_price": 7837,
+      "rarity": "rare",
+      "description": "Advanced insulation materials for harsh environments"
     },
     {
-      "name": "Marine Equipment",
-      "category": "Machinery",
-      "base_price": 1523,
+      "name": "Liquid Oxygen",
+      "category": "Chemicals",
+      "base_price": 263,
+      "rarity": "common",
+      "description": "Essential oxidizer for life support systems"
+    },
+    {
+      "name": "Medical Diagnostic Equipment",
+      "category": "Medicines",
+      "base_price": 2848,
       "rarity": "uncommon",
-      "description": "Specialized equipment for aquatic environments"
+      "description": "Advanced medical equipment for colony health services"
+    },
+    {
+      "name": "Non-Lethal Weapons",
+      "category": "Weapons",
+      "base_price": 1837,
+      "rarity": "uncommon",
+      "description": "Non-lethal defense equipment for colony security"
+    },
+    {
+      "name": "Polymers",
+      "category": "Industrial Materials",
+      "base_price": 171,
+      "rarity": "common",
+      "description": "Synthetic materials for various applications"
     },
     {
       "name": "Power Generators",
@@ -146,6 +90,48 @@
       "base_price": 458,
       "rarity": "common",
       "description": "Power generation equipment for colony energy needs"
+    },
+    {
+      "name": "Semiconductors",
+      "category": "Technology",
+      "base_price": 967,
+      "rarity": "uncommon",
+      "description": "Electronic components for advanced systems"
+    },
+    {
+      "name": "Steel",
+      "category": "Metals",
+      "base_price": 335,
+      "rarity": "common",
+      "description": "Essential structural metal for construction"
+    },
+    {
+      "name": "Superconductors",
+      "category": "Technology",
+      "base_price": 6609,
+      "rarity": "rare",
+      "description": "Advanced materials for high-efficiency systems"
+    },
+    {
+      "name": "Titanium",
+      "category": "Metals",
+      "base_price": 1006,
+      "rarity": "uncommon",
+      "description": "High-strength lightweight metal for advanced construction"
+    },
+    {
+      "name": "Water",
+      "category": "Chemicals",
+      "base_price": 120,
+      "rarity": "common",
+      "description": "Essential for life support and industrial processes"
+    },
+    {
+      "name": "Water Purifiers",
+      "category": "Machinery",
+      "base_price": 258,
+      "rarity": "common",
+      "description": "Equipment for water treatment and purification"
     }
   ]
 }
