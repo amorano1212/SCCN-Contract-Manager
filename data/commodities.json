@@ -3,133 +3,133 @@
     {
       "name": "Aluminum",
       "category": "Metals",
-      "base_price": 340,
+      "base_price": 2540,
       "rarity": "common",
       "description": "Lightweight metal essential for construction"
     },
     {
       "name": "Ceramic Composites",
       "category": "Industrial Materials",
-      "base_price": 232,
+      "base_price": 402,
       "rarity": "common",
       "description": "Advanced composite materials for construction"
     },
     {
       "name": "CMM Composites",
       "category": "Industrial Materials",
-      "base_price": 3132,
+      "base_price": 5972,
       "rarity": "uncommon",
       "description": "Ceramic Matrix Composites for advanced applications"
     },
     {
       "name": "Computer Components",
       "category": "Technology",
-      "base_price": 513,
+      "base_price": 250,
       "rarity": "common",
       "description": "Electronic components for colony infrastructure"
     },
     {
       "name": "Copper",
       "category": "Metals",
-      "base_price": 481,
+      "base_price": 631,
       "rarity": "common",
       "description": "Essential metal for electrical systems"
     },
     {
       "name": "Food Cartridges",
       "category": "Foods",
-      "base_price": 105,
+      "base_price": 250,
       "rarity": "common",
       "description": "Essential food supplies for colonists"
     },
     {
       "name": "Fruit and Vegetables",
       "category": "Foods",
-      "base_price": 312,
+      "base_price": 250,
       "rarity": "common",
       "description": "Fresh produce for colony nutrition"
     },
     {
       "name": "Insulating Membrane",
       "category": "Industrial Materials",
-      "base_price": 7837,
+      "base_price": 5000,
       "rarity": "rare",
       "description": "Advanced insulation materials for harsh environments"
     },
     {
       "name": "Liquid Oxygen",
       "category": "Chemicals",
-      "base_price": 263,
+      "base_price": 1375,
       "rarity": "common",
       "description": "Essential oxidizer for life support systems"
     },
     {
       "name": "Medical Diagnostic Equipment",
       "category": "Medicines",
-      "base_price": 2848,
+      "base_price": 250,
       "rarity": "uncommon",
       "description": "Advanced medical equipment for colony health services"
     },
     {
       "name": "Non-Lethal Weapons",
       "category": "Weapons",
-      "base_price": 1837,
+      "base_price": 250,
       "rarity": "uncommon",
       "description": "Non-lethal defense equipment for colony security"
     },
     {
       "name": "Polymers",
       "category": "Industrial Materials",
-      "base_price": 171,
+      "base_price": 306,
       "rarity": "common",
       "description": "Synthetic materials for various applications"
     },
     {
       "name": "Power Generators",
       "category": "Machinery",
-      "base_price": 458,
+      "base_price": 250,
       "rarity": "common",
       "description": "Power generation equipment for colony energy needs"
     },
     {
       "name": "Semiconductors",
       "category": "Technology",
-      "base_price": 967,
+      "base_price": 250,
       "rarity": "uncommon",
       "description": "Electronic components for advanced systems"
     },
     {
       "name": "Steel",
       "category": "Metals",
-      "base_price": 335,
+      "base_price": 4179,
       "rarity": "common",
       "description": "Essential structural metal for construction"
     },
     {
       "name": "Superconductors",
       "category": "Technology",
-      "base_price": 6609,
+      "base_price": 250,
       "rarity": "rare",
       "description": "Advanced materials for high-efficiency systems"
     },
     {
       "name": "Titanium",
       "category": "Metals",
-      "base_price": 1006,
+      "base_price": 4446,
       "rarity": "uncommon",
       "description": "High-strength lightweight metal for advanced construction"
     },
     {
       "name": "Water",
       "category": "Chemicals",
-      "base_price": 120,
+      "base_price": 260,
       "rarity": "common",
       "description": "Essential for life support and industrial processes"
     },
     {
       "name": "Water Purifiers",
       "category": "Machinery",
-      "base_price": 258,
+      "base_price": 260,
       "rarity": "common",
       "description": "Equipment for water treatment and purification"
     }
