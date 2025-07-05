@@ -137,13 +137,15 @@ async def setup_commands(bot: commands.Bot):
             
             embed.set_footer(text="Use /accept_contract to accept this quote within 24 hours")
             
-            # Try to create thread for the quote
+            # Send the quote first
+            message = await interaction.followup.send(embed=embed, wait=True)
+            
+            # Try to create thread for the quote (optional)
             thread_name = f"{interaction.user.display_name} - {destination}"
             try:
-                # Check if the channel supports threads (only text channels)
-                if isinstance(interaction.channel, discord.TextChannel):
-                    # Send the quote first
-                    message = await interaction.followup.send(embed=embed, wait=True)
+                # Check if the channel supports threads and is in a guild
+                if (isinstance(interaction.channel, discord.TextChannel) and 
+                    interaction.guild is not None):
                     
                     # Create thread from the message
                     thread = await message.create_thread(
@@ -157,13 +159,9 @@ async def setup_commands(bot: commands.Bot):
                     # Send a welcome message in the thread tagging the user
                     await thread.send(f"{interaction.user.mention} Your quote is above! Use `/accept_contract {contract_id}` to accept this quote.")
                     
-                else:
-                    # If not a text channel, send normally
-                    await interaction.followup.send(embed=embed)
             except Exception as e:
                 logger.error(f"Failed to create thread: {e}")
-                # Fallback to normal message
-                await interaction.followup.send(embed=embed)
+                # Continue without thread - quote is already posted
             
         except ValueError as e:
             await interaction.followup.send(
