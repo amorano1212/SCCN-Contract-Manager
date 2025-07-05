@@ -24,14 +24,16 @@ async def setup_commands(bot: commands.Bot):
         commodities="Comma-separated list of commodities (e.g., 'Food Cartridges, Medical Supplies')",
         quantities="Comma-separated list of quantities matching commodities (e.g., '100, 50')",
         destination="Destination system name",
-        source="Source system name (optional, defaults to nearest hub)"
+        primary_port="Is this for a primary port on a timer? (true/false)",
+        days_left="If primary port, how many days are left on the timer? (leave blank if not primary port)"
     )
     async def request_quote(
         interaction: discord.Interaction,
         commodities: str,
         quantities: str,
         destination: str,
-        source: Optional[str] = None
+        primary_port: bool = False,
+        days_left: Optional[int] = None
     ):
         """Handle quote requests for commodity contracts"""
         await interaction.response.defer()
@@ -75,15 +77,10 @@ async def setup_commands(bot: commands.Bot):
                         f"❌ **Error**: Quantity for '{commodity_list[i]}' must be greater than 0."
                     )
                     return
-                if qty > 10000:
-                    await interaction.followup.send(
-                        f"❌ **Error**: Quantity for '{commodity_list[i]}' exceeds maximum limit of 10,000 units."
-                    )
-                    return
             
             # Calculate quote
             quote_data = pricing_calculator.calculate_quote(
-                commodity_list, quantity_list, destination, source
+                commodity_list, quantity_list, destination, primary_port, days_left
             )
             
             # Create contract
@@ -92,7 +89,8 @@ async def setup_commands(bot: commands.Bot):
                 commodities=commodity_list,
                 quantities=quantity_list,
                 destination=destination,
-                source=quote_data['source'],
+                primary_port=primary_port,
+                days_left=days_left,
                 quote_data=quote_data
             )
             
@@ -105,10 +103,8 @@ async def setup_commands(bot: commands.Bot):
             
             # Add commodity details
             commodity_text = ""
-            for i, (commodity, quantity) in enumerate(zip(commodity_list, quantity_list)):
-                unit_price = quote_data['commodity_prices'][i]
-                total_price = unit_price * quantity
-                commodity_text += f"• **{commodity}**: {quantity:,} units @ {unit_price:,} CR/unit = {total_price:,} CR\n"
+            for commodity, quantity in zip(commodity_list, quantity_list):
+                commodity_text += f"• **{commodity}**: {quantity:,} units\n"
             
             embed.add_field(
                 name="📦 Commodities",
@@ -117,33 +113,26 @@ async def setup_commands(bot: commands.Bot):
             )
             
             embed.add_field(
-                name="🗺️ Route",
-                value=f"**From**: {quote_data['source']}\n**To**: {destination}",
+                name="🗺️ Destination",
+                value=destination,
                 inline=True
             )
             
-            embed.add_field(
-                name="📊 Distance",
-                value=f"{quote_data['distance']:.1f} LY",
-                inline=True
-            )
+            # Primary port info
+            if primary_port:
+                port_info = "Yes"
+                if days_left is not None:
+                    port_info += f" ({days_left} days left)"
+                embed.add_field(
+                    name="⏰ Primary Port Timer",
+                    value=port_info,
+                    inline=True
+                )
             
-            # Pricing breakdown
-            pricing_text = f"**Commodity Cost**: {quote_data['commodity_cost']:,} CR\n"
-            pricing_text += f"**Transport Fee**: {quote_data['transport_fee']:,} CR\n"
-            pricing_text += f"**Risk Premium**: {quote_data['risk_premium']:,} CR\n"
-            pricing_text += f"**Total**: {quote_data['total_cost']:,} CR"
-            
             embed.add_field(
-                name="💰 Pricing Breakdown",
-                value=pricing_text,
+                name="💰 Total Cost",
+                value=f"{quote_data['total_cost']:,} CR",
                 inline=False
-            )
-            
-            embed.add_field(
-                name="⏱️ Estimated Delivery",
-                value=f"{quote_data['estimated_delivery_hours']} hours",
-                inline=True
             )
             
             embed.set_footer(text="Use /accept_contract to accept this quote within 24 hours")
@@ -339,8 +328,9 @@ async def setup_commands(bot: commands.Bot):
                 "   • **commodities**: List separated by commas\n"
                 "   • **quantities**: Numbers separated by commas\n"
                 "   • **destination**: Target system name\n"
-                "   • **source**: (optional) Source system\n\n"
-                "**Example**: `/request_quote commodities:Food Cartridges,Medical Supplies quantities:100,50 destination:Colonia`"
+                "   • **primary_port**: True if for primary port timer\n"
+                "   • **days_left**: Days remaining if primary port\n\n"
+                "**Example**: `/request_quote commodities:Aluminum,Steel quantities:100,50 destination:YourSystem primary_port:true days_left:5`"
             ),
             inline=False
         )
@@ -351,7 +341,8 @@ async def setup_commands(bot: commands.Bot):
                 "• Use exact commodity names from `/list_commodities`\n"
                 "• Quotes expire after 24 hours\n"
                 "• Any system name can be used as destination\n"
-                "• Maximum 10,000 units per commodity"
+                "• Standard rate: 60,000 CR per unit\n"
+                "• Primary port urgent (≤10 days): 80,000 CR per unit"
             ),
             inline=False
         )

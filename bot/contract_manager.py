@@ -17,7 +17,8 @@ class ContractManager:
         commodities: List[str],
         quantities: List[int],
         destination: str,
-        source: str,
+        primary_port: bool,
+        days_left: Optional[int],
         quote_data: dict
     ) -> str:
         """Create a new contract and return contract ID"""
@@ -29,7 +30,8 @@ class ContractManager:
             'commodities': commodities,
             'quantities': quantities,
             'destination': destination,
-            'source': source,
+            'primary_port': primary_port,
+            'days_left': days_left,
             'quote_data': quote_data,
             'status': 'pending',
             'created_at': datetime.now().isoformat(),

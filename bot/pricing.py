@@ -67,92 +67,34 @@ class PricingCalculator:
         commodities: List[str],
         quantities: List[int],
         destination: str,
-        source: Optional[str] = None
+        primary_port: bool = False,
+        days_left: Optional[int] = None
     ) -> Dict[str, Any]:
-        """Calculate a complete quote for commodity delivery"""
+        """Calculate a simplified quote for commodity delivery"""
         
-        # Determine source system
-        if not source:
-            source = self.get_nearest_supply_hub(destination)
+        # Calculate total units
+        total_units = sum(quantities)
         
-        # Calculate distance
-        distance = self.calculate_distance(source, destination)
+        # Calculate total cost based on simplified pricing model
+        # 60,000 CR per unit unless it's a primary port with 10 or fewer days left
+        unit_price = 60000
         
-        # Calculate commodity costs and transport fees
-        commodity_costs = []
-        commodity_prices = []
-        total_commodity_cost = 0
-        total_tonnage = 0
+        # Check if this is a primary port with urgent timing
+        if primary_port and days_left is not None and days_left <= 10:
+            # Apply premium pricing for urgent primary port deliveries
+            unit_price = 80000  # Increased price for urgent deliveries
         
-        for i, (commodity, quantity) in enumerate(zip(commodities, quantities)):
-            commodity_data = self.commodity_prices.get(commodity, {})
-            base_price = commodity_data.get('base_price', 500)  # Default if not found
-            rarity = commodity_data.get('rarity', 'common')
-            
-            # Apply market fluctuation (±10%)
-            price_variation = random.uniform(0.9, 1.1)
-            unit_price = int(base_price * price_variation)
-            
-            # Apply rarity multiplier
-            rarity_multiplier = {'common': 1.0, 'uncommon': 1.3, 'rare': 1.8}.get(rarity, 1.0)
-            unit_price = int(unit_price * rarity_multiplier)
-            
-            commodity_cost = unit_price * quantity
-            commodity_costs.append(commodity_cost)
-            commodity_prices.append(unit_price)
-            total_commodity_cost += commodity_cost
-            
-            # Assume 1 unit = 1 ton for simplicity
-            total_tonnage += quantity
-        
-        # Calculate transport fee
-        base_transport_fee = int(total_tonnage * distance * self.base_transport_rate)
-        
-        # Distance-based multiplier
-        distance_multiplier = 1.0
-        if distance > 500:
-            distance_multiplier = 1.2
-        elif distance > 1000:
-            distance_multiplier = 1.5
-        elif distance > 2000:
-            distance_multiplier = 2.0
-        
-        transport_fee = int(base_transport_fee * distance_multiplier)
-        
-        # Calculate risk premium
-        risk_premium = int(total_commodity_cost * self.risk_premium_rate)
-        
-        # Add fuel costs
-        fuel_cost = int(distance * self.fuel_cost_per_ly)
-        
-        # Calculate estimated delivery time
-        estimated_hours = self.calculate_delivery_time(distance, total_tonnage)
-        
-        # Time-based premium for long deliveries
-        time_premium = 0
-        if estimated_hours > 24:
-            time_premium = int(total_commodity_cost * self.time_value_multiplier * (estimated_hours / 24))
-        
-        # Calculate totals
-        total_cost = total_commodity_cost + transport_fee + risk_premium + fuel_cost + time_premium
+        total_cost = total_units * unit_price
         
         quote_data = {
-            'source': source,
             'destination': destination,
-            'distance': distance,
             'commodities': commodities,
             'quantities': quantities,
-            'commodity_prices': commodity_prices,
-            'commodity_costs': commodity_costs,
-            'commodity_cost': total_commodity_cost,
-            'transport_fee': transport_fee,
-            'risk_premium': risk_premium,
-            'fuel_cost': fuel_cost,
-            'time_premium': time_premium,
+            'total_units': total_units,
+            'unit_price': unit_price,
             'total_cost': total_cost,
-            'total_tonnage': total_tonnage,
-            'estimated_delivery_hours': estimated_hours,
-            'distance_multiplier': distance_multiplier
+            'primary_port': primary_port,
+            'days_left': days_left
         }
         
         return quote_data
