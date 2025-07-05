@@ -94,7 +94,7 @@ Preferred communication style: Simple, everyday language.
 
 Changelog:
 - July 04, 2025. Initial setup
-- July 05, 2025. Implemented simplified pricing model (60,000 CR per unit, 80,000 CR for urgent primary port deliveries), removed system validation to allow free text input for destination systems
+- July 05, 2025. Implemented simplified pricing model (60,000 CR per unit, 80,000 CR for urgent primary port deliveries), removed system validation to allow free text input for destination systems, added thread creation functionality for quotes with @parn notification on contract acceptance
 
 ## Technical Notes
 

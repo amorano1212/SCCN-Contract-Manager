@@ -92,6 +92,13 @@ class ContractManager:
         logger.info(f"Contract {contract_id} status updated to {status}")
         return True
     
+    def update_contract_thread(self, contract_id: str, thread_id: int) -> bool:
+        """Update contract with thread ID"""
+        if contract_id in self.contracts:
+            self.contracts[contract_id]['thread_id'] = thread_id
+            return True
+        return False
+    
     def cleanup_expired_contracts(self):
         """Remove expired pending contracts"""
         current_time = datetime.now()

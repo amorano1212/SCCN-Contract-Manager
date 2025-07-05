@@ -137,7 +137,40 @@ async def setup_commands(bot: commands.Bot):
             
             embed.set_footer(text="Use /accept_contract to accept this quote within 24 hours")
             
-            await interaction.followup.send(embed=embed)
+            # Try to create thread for the quote
+            thread_name = f"{interaction.user.display_name} - {destination}"
+            try:
+                # Check if the channel supports threads (only text channels)
+                if isinstance(interaction.channel, discord.TextChannel):
+                    # Send a message first to create thread from it
+                    initial_message = await interaction.followup.send(
+                        f"Creating quote thread for {interaction.user.mention}...",
+                        wait=True
+                    )
+                    
+                    # Create thread from the message
+                    thread = await initial_message.create_thread(
+                        name=thread_name,
+                        auto_archive_duration=1440  # 24 hours
+                    )
+                    
+                    # Store thread ID in contract for later reference
+                    contract_manager.update_contract_thread(contract_id, thread.id)
+                    
+                    # Send the quote in the thread and tag the user
+                    await thread.send(f"{interaction.user.mention}", embed=embed)
+                    
+                    # Update the original message
+                    await initial_message.edit(
+                        content=f"✅ Quote created! Check the thread: {thread.mention}"
+                    )
+                else:
+                    # If not a text channel, send normally
+                    await interaction.followup.send(embed=embed)
+            except Exception as e:
+                logger.error(f"Failed to create thread: {e}")
+                # Fallback to normal message
+                await interaction.followup.send(embed=embed)
             
         except ValueError as e:
             await interaction.followup.send(
@@ -192,15 +225,24 @@ async def setup_commands(bot: commands.Bot):
                 inline=True
             )
             
-            embed.add_field(
-                name="⏱️ Estimated Delivery",
-                value=f"{contract['quote_data']['estimated_delivery_hours']} hours",
-                inline=True
-            )
-            
             embed.set_footer(text="You will be contacted for payment and delivery coordination.")
             
-            await interaction.followup.send(embed=embed)
+            # Try to notify @parn in the thread if it exists
+            thread_id = contract.get('thread_id')
+            if thread_id:
+                try:
+                    # Get the thread from the bot client
+                    thread = interaction.client.get_channel(thread_id)
+                    if thread and isinstance(thread, discord.Thread):
+                        await thread.send(f"<@parn> Contract {contract_id} has been accepted! 🎉")
+                        await interaction.followup.send(embed=embed)
+                    else:
+                        await interaction.followup.send(embed=embed)
+                except Exception as e:
+                    logger.error(f"Failed to notify in thread: {e}")
+                    await interaction.followup.send(embed=embed)
+            else:
+                await interaction.followup.send(embed=embed)
             
         except Exception as e:
             logger.error(f"Error in accept_contract: {e}")
