@@ -40,22 +40,9 @@ class SystemValidator:
         if not system_name or not isinstance(system_name, str):
             return False
         
-        # Check exact match first
-        if system_name in self.systems:
-            return True
-        
-        # Check case-insensitive match
-        for system in self.systems:
-            if system.lower() == system_name.lower():
-                return True
-        
-        # Check partial match for common abbreviations
-        system_lower = system_name.lower()
-        for system in self.systems:
-            if system_lower in system.lower() or system.lower() in system_lower:
-                return True
-        
-        return False
+        # Accept any non-empty string as a valid system name
+        # This allows users to specify any system without restriction
+        return len(system_name.strip()) > 0
     
     def get_system_suggestions(self, partial_name: str, limit: int = 5) -> List[str]:
         """Get system name suggestions based on partial input"""

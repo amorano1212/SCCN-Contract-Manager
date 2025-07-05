@@ -1,7 +1,7 @@
 import json
 import math
 import random
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import logging
 import os
 
@@ -67,7 +67,7 @@ class PricingCalculator:
         commodities: List[str],
         quantities: List[int],
         destination: str,
-        source: str = None
+        source: Optional[str] = None
     ) -> Dict[str, Any]:
         """Calculate a complete quote for commodity delivery"""
         

@@ -48,11 +48,10 @@ async def setup_commands(bot: commands.Bot):
                 )
                 return
             
-            # Validate destination system
+            # Validate destination system (just check it's not empty)
             if not system_validator.is_valid_system(destination):
                 await interaction.followup.send(
-                    f"❌ **Error**: System '{destination}' not found in Elite Dangerous database.\n"
-                    "Please check the spelling and try again."
+                    f"❌ **Error**: Please provide a valid system name for the destination."
                 )
                 return
             
@@ -351,7 +350,7 @@ async def setup_commands(bot: commands.Bot):
             value=(
                 "• Use exact commodity names from `/list_commodities`\n"
                 "• Quotes expire after 24 hours\n"
-                "• Check system names carefully\n"
+                "• Any system name can be used as destination\n"
                 "• Maximum 10,000 units per commodity"
             ),
             inline=False
