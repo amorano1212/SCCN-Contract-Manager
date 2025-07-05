@@ -50,10 +50,10 @@ async def setup_commands(bot: commands.Bot):
                 )
                 return
             
-            # Validate destination system (just check it's not empty)
-            if not system_validator.is_valid_system(destination):
+            # Validate destination (just check it's not empty)
+            if not destination.strip():
                 await interaction.followup.send(
-                    f"❌ **Error**: Please provide a valid system name for the destination."
+                    f"❌ **Error**: Please provide a destination system name."
                 )
                 return
             
