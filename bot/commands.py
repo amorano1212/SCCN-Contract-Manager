@@ -142,14 +142,11 @@ async def setup_commands(bot: commands.Bot):
             try:
                 # Check if the channel supports threads (only text channels)
                 if isinstance(interaction.channel, discord.TextChannel):
-                    # Send a message first to create thread from it
-                    initial_message = await interaction.followup.send(
-                        f"Creating quote thread for {interaction.user.mention}...",
-                        wait=True
-                    )
+                    # Send the quote first
+                    message = await interaction.followup.send(embed=embed, wait=True)
                     
                     # Create thread from the message
-                    thread = await initial_message.create_thread(
+                    thread = await message.create_thread(
                         name=thread_name,
                         auto_archive_duration=1440  # 24 hours
                     )
@@ -157,13 +154,9 @@ async def setup_commands(bot: commands.Bot):
                     # Store thread ID in contract for later reference
                     contract_manager.update_contract_thread(contract_id, thread.id)
                     
-                    # Send the quote in the thread and tag the user
-                    await thread.send(f"{interaction.user.mention}", embed=embed)
+                    # Send a welcome message in the thread tagging the user
+                    await thread.send(f"{interaction.user.mention} Your quote is above! Use `/accept_contract {contract_id}` to accept this quote.")
                     
-                    # Update the original message
-                    await initial_message.edit(
-                        content=f"✅ Quote created! Check the thread: {thread.mention}"
-                    )
                 else:
                     # If not a text channel, send normally
                     await interaction.followup.send(embed=embed)
